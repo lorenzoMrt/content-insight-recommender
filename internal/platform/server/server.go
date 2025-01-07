@@ -1,16 +1,15 @@
 package server
 
 import (
-	"time"
-
 	kitlog "github.com/go-kit/log"
+	"time"
 )
 
-type ServerConfig struct {
+type Config struct {
 	httpAddr        string
 	shutdownTimeout time.Duration
 }
 type Server struct {
-	config ServerConfig
+	config Config
 	logger kitlog.Logger
 }
