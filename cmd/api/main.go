@@ -1,20 +1,22 @@
 package main
 
 import (
+	"fmt"
+	"log"
+
 	"github.com/gin-gonic/gin"
 	models "github.com/lorenzoMrt/content-insight-recommender/internal/platform/storage/postgresql"
 	"github.com/lorenzoMrt/content-insight-recommender/internal/recommender"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
 )
 
 var db *gorm.DB
 
 func init() {
 	var err error
-	urlDb := fmt.Sprintf("postgres://%s:%s@%s:%d/%s", "postgres", "example", "localhost", "postgres", 5432)
-	db, err = gorm.Open(postgres.Open("database.db"), &gorm.Config{})
+	urlDb := fmt.Sprintf("postgres://%s:%s@%s:%d/%s", "admin", "development", "localhost", 5432, "recomendations")
+	db, err = gorm.Open(postgres.Open(urlDb), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
